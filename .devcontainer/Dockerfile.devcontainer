@@ -119,18 +119,21 @@ COPY .devcontainer/conf/sogo/compile_sogo.sh /usr/local/bin/compile_sogo.sh
 RUN chmod +x /usr/local/bin/compile_sogo.sh
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt install -qy nodejs \
-    && npm i -g grunt
+#RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+#RUN apt install -qy nodejs \
+#    && npm i -g grunt
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
+    \. "$HOME/.nvm/nvm.sh" && \
+    nvm install v16.20.2 && \
+    nvm alias default v16.20.2 && \
+    npm i -g grunt xunit-viewer
 
 # Users
 RUN useradd sogo-tests1 && \
     useradd sogo-tests2 && \
     useradd sogo-tests3 && \
     useradd sogo-tests-super
-
-# Tests
-RUN npm i -g xunit-viewer
 
 
 # SOGo
@@ -160,4 +163,4 @@ RUN chmod +x /entrypoint.sh
 
 USER ${CONTAINER_USERNAME}
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
