@@ -2620,7 +2620,11 @@ inRecurrenceExceptionsForEvent: (iCalEvent *) theEvent
   BOOL mustUpdate;
   
   rq = [_ctx request];
-  rqCalendar = [iCalCalendar parseSingleFromSource: [rq contentAsString]];
+  NSString *myString = [rq contentAsString];
+  NSString *myStringEdited = [myString stringByReplacingOccurrencesOfString:@"TZOFFSETTO:+023017" withString:@"TZOFFSETTO:+0300"];
+  NSString *myStringEdited2 = [myStringEdited stringByReplacingOccurrencesOfString:@"TZOFFSETFROM:+023017" withString:@"TZOFFSETFROM:+0300"];
+  //rqCalendar = [iCalCalendar parseSingleFromSource: [rq contentAsString]];
+  rqCalendar = [iCalCalendar parseSingleFromSource: myStringEdited2];
   mustUpdate = YES;
   ex = nil;
 
