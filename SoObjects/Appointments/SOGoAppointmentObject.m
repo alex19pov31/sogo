@@ -2623,8 +2623,10 @@ inRecurrenceExceptionsForEvent: (iCalEvent *) theEvent
   NSString *myString = [rq contentAsString];
   NSString *myStringEdited = [myString stringByReplacingOccurrencesOfString:@"TZOFFSETTO:+0400" withString:@"TZOFFSETTO:+0300"];
   NSString *myStringEdited2 = [myStringEdited stringByReplacingOccurrencesOfString:@"TZOFFSETFROM:+0400" withString:@"TZOFFSETFROM:+0300"];
+  NSString *myStringEdited3 = [myStringEdited2 stringByReplacingOccurrencesOfString:@"TZOFFSETTO:+023017" withString:@"TZOFFSETTO:+0300"];
+  NSString *myStringEdited4 = [myStringEdited3 stringByReplacingOccurrencesOfString:@"TZOFFSETFROM:+023017" withString:@"TZOFFSETFROM:+0300"];
   //rqCalendar = [iCalCalendar parseSingleFromSource: [rq contentAsString]];
-  rqCalendar = [iCalCalendar parseSingleFromSource: myStringEdited2];
+  rqCalendar = [iCalCalendar parseSingleFromSource: myStringEdited4];
   mustUpdate = YES;
   ex = nil;
 
