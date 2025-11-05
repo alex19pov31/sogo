@@ -2621,8 +2621,8 @@ inRecurrenceExceptionsForEvent: (iCalEvent *) theEvent
   
   rq = [_ctx request];
   NSString *myString = [rq contentAsString];
-  NSString *myStringEdited = [myString stringByReplacingOccurrencesOfString:@"TZOFFSETTO:+023017" withString:@"TZOFFSETTO:+0300"];
-  NSString *myStringEdited2 = [myStringEdited stringByReplacingOccurrencesOfString:@"TZOFFSETFROM:+023017" withString:@"TZOFFSETFROM:+0300"];
+  NSString *myStringEdited = [myString stringByReplacingOccurrencesOfString:@"TZOFFSETTO:+0231" withString:@"TZOFFSETTO:+0300"];
+  NSString *myStringEdited2 = [myStringEdited stringByReplacingOccurrencesOfString:@"TZOFFSETFROM:+0231" withString:@"TZOFFSETFROM:+0300"];
   //rqCalendar = [iCalCalendar parseSingleFromSource: [rq contentAsString]];
   rqCalendar = [iCalCalendar parseSingleFromSource: myStringEdited2];
   mustUpdate = YES;
